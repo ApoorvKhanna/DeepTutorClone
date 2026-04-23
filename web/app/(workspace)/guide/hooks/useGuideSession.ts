@@ -981,6 +981,10 @@ export function useGuideSession() {
     [addChatMessage, stopPolling],
   );
 
+  const clearLocalSession = useCallback(() => {
+    resetGuideState();
+  }, [resetGuideState]);
+
   const canStart =
     sessionState.status === "initialized" &&
     sessionState.knowledge_points.length > 0;
@@ -1016,6 +1020,7 @@ export function useGuideSession() {
     sendMessage,
     fixHtml,
     resetSession,
+    clearLocalSession,
     loadSession,
   };
 }
